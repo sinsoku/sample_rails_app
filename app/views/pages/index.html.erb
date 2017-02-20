@@ -1,0 +1,6 @@
+<% @products.each do |product| %>
+  <p><%= product.supplier.name %></p>
+  <% if product.supplier.is_a?(User) %>
+    <p><%= product.supplier.user_profiles.map(&:age) %></p>
+  <% end %>
+<% end %>

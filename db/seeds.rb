@@ -9,9 +9,11 @@ User.delete_all
 UserProfile.delete_all
 Product.delete_all
 
-user = User.create(name: 'user')
-UserProfile.create(user: user, age: 1)
-Product.create(supplier: user)
+users = User.create([{ name: 'user_1' }, { name: 'user_2' }])
+users.each_with_index do |user, i|
+  UserProfile.create(user: user, age: i)
+  Product.create(supplier: user)
+end
 
 company = Company.create(name: 'company')
 Product.create(supplier: company)
